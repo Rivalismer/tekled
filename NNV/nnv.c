@@ -31,5 +31,5 @@ float nnv_ir_finite(float* k_arr, float g, uint8_t n_e){
 
         temp_nnv = nnv_finite(k_arr, g, n_e, temp_r);
     }
-    return temp_r
+    return temp_r;
 }
