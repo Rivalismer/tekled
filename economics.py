@@ -1,8 +1,9 @@
 def NNV(k_arr, g, n_e, r):
+    s = float(input("What is the rest value (S)?"))
     nnv = -g
     for i in range(0, n_e):
         nnv += 1/pow(1+r, i+1) * k_arr[i]
-    return nnv
+    return nnv + 1/pow(1+r, n_e) * s
 
 
 def IRR(k_arr, g, n_e):
@@ -47,7 +48,7 @@ def menu_run():
         menu_choice = int(input())
 
         if menu_choice == 1:
-            print("Please provide (in this order):\n Start capital invested\n Rent\n How long the project will run for\n An array of k-values")
+            print("Please provide (in this order):\nStart capital invested\nRent\nHow long the project will run for\nAn array of k-values")
             g = float(input())
             r = float(input())
             n_e = int(input())
@@ -61,7 +62,7 @@ def menu_run():
             print("Resulting NNV:\n", nnv)
 
         elif menu_choice == 2:  
-            print("Please provide (in this order):\n Start capital invested\n How long the project will run for\n An array of k-values")
+            print("Please provide (in this order):\nStart capital invested\nHow long the project will run for\nAn array of k-values")
             g = float(input())
             n_e = int(input())
             k_arr = []
@@ -69,40 +70,44 @@ def menu_run():
             for i in range (0, n_e):
                 temp_k = float(input())
                 k_arr.append(temp_k)
+            nnv = NNV(k_arr, g, n_e, r)
 
             r = IRR(k_arr, g, n_e)
             print("Resulting IR:\n", r)
         
         elif menu_choice == 3:
+            cont = 0
             if nnv != 0:
                 cont = input("Do you want to continue using the same NNV (y/n)?")
-                if cont == 'n':
-                    print("Please provide (in this order):\n Start capital invested\n Rent\n How long the project will run for\n An array of k-values")
-                    g = float(input())
-                    r = float(input())
-                    n_e = int(input())
-                    k_arr = []
+            if cont != 'y':
+                print("Please provide (in this order):\nStart capital invested\nRent\nHow long the project will run for\nAn array of k-values")
+                g = float(input())
+                r = float(input())
+                n_e = int(input())
+                k_arr = []
 
-                    for i in range (0, n_e):
-                        temp_k = float(input())
-                        k_arr.append(temp_k)
+                for i in range (0, n_e):
+                    temp_k = float(input())
+                    k_arr.append(temp_k)
+                nnv = NNV(k_arr, g, n_e, r)
 
             annu = ANNU(k_arr, g, n_e, r)
             print("Resulting annuitet:\n", annu)
             
         elif menu_choice == 4:
+            cont = 0
             if nnv != 0:
                 cont = input("Do you want to continue using the same NNV (y/n)?")
-                if cont == 'n':
-                    print("Please provide (in this order):\n Start capital invested\n Rent\n How long the project will run for\n An array of k-values")
-                    g = float(input())
-                    r = float(input())
-                    n_e = int(input())
-                    k_arr = []
+            if cont != 'y':
+                print("Please provide (in this order):\nStart capital invested\nRent\nHow long the project will run for\nAn array of k-values")
+                g = float(input())
+                r = float(input())
+                n_e = int(input())
+                k_arr = []
 
-                    for i in range (0, n_e):
-                        temp_k = float(input())
-                        k_arr.append(temp_k)
+                for i in range (0, n_e):
+                    temp_k = float(input())
+                    k_arr.append(temp_k)
                         
             nnv_quota = NNV_QUOTA(k_arr, g, n_e, r)
             print("Resulting quota:\n", nnv_quota)
