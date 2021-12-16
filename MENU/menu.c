@@ -7,7 +7,7 @@ void menu_run(){
     int menu_choice = 0;
     float nnv = 0;
     float g = 0;
-    uint8_t n_e = 0;
+    int n_e = 0;
     float r = 0;
     float k_arr[MAX_LENGTH_K];
 
@@ -25,8 +25,8 @@ void menu_run(){
             printf("Please provide (in this order):\n Start capital invested\n How long the project will run for\n Rent\n An array of k-values\n");
             scanf("%f%d%f", &g, &n_e, &r);
 
-            for(uint8_t i = 0; i < n_e; i++){
-                scanf("%f", k_arr[i]);
+            for(int i = 0; i < n_e; i++){
+                scanf("%f", &k_arr[i]);
             }
 
             nnv = nnv_finite(k_arr, g, n_e, r);
@@ -39,8 +39,8 @@ void menu_run(){
             printf("Please provide (in this order):\n Start capital invested\n How long the project will run for\n An array of k-values\n");
             scanf("%f%d", &g, &n_e);
 
-            for(uint8_t i = 0; i < n_e; i++){
-                scanf("%f", k_arr[i]);
+            for(int i = 0; i < n_e; i++){
+                scanf("%f", &k_arr[i]);
             }
 
             r = nnv_ir_finite(k_arr, g, n_e);
