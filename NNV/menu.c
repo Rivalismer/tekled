@@ -1,7 +1,5 @@
 #include "menu.h"
-#include "../NNV/nnv.h"
-
-
+#include "nnv.h"
 
 void menu_run(){
     int menu_choice = 0;

@@ -1,4 +1,6 @@
 #include "nnv.h"
+
+
 #define tol 0.001
 
 static float temp_nnv = 0;
@@ -6,8 +8,10 @@ static float temp_nnv = 0;
 
 float nnv_finite(float* k_arr, float g, int n_e, float r){
     float nnv = -g;
+    double divisor = 0;
     for(int i = 0; i < n_e; i++){
-        nnv += 1 / pow(1+r, 1+i) * k_arr[i];
+        divisor = pow((double)(1+r), (double)(1+i));
+        nnv += 1 /divisor * k_arr[i];
     }
 
     return nnv;

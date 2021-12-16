@@ -1,5 +1,5 @@
-#include "NNV/nnv.h"
-#include "MENU/menu.h"
+#include "nnv.h"
+#include "menu.h"
 
 int main(){
     menu_run();

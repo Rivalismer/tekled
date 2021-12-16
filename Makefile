@@ -1,25 +1,29 @@
-.DEFAULT_GOAL := menu
+.DEFAULT_GOAL := main
 
-SOURCES := menu.c
+SOURCES := menu.c nnv.c main.c
+INC := -lmath -lstdio -lstdint -lstdlib
 
 BUILD_DIR := build
-SOURCE_DIR := MENU
-INC_DIR := NNV
+SOURCE_DIR := NNV
 
-SRC := $(SOURCES:%.c=source/%.c)
+# this path is wrong
+INC_DIR := -L/usr/lib/
+
+SRC := $(SOURCES:%.c=NNV/%.c)
 CC = gcc
 CFLAGS = -O0 -g3
 PARTS = $(SOURCES:%.c=$(BUILD_DIR)/%.o)
 
+
 .PHONY: clean
 clean:
 	rm -f $(BUILD_DIR)/*.o
-	rm -f $(BUILD_DIR)/menu
+	rm -f $(BUILD_DIR)/main
 
-menu : $(PARTS)
+main : $(PARTS)
 	echo parts: $(PARTS)
 	echo build: $(SRC)
-	$(CC) -o $(BUILD_DIR)/menu $(PARTS) $(CFLAGS)
+	$(CC) -o $(BUILD_DIR)/main $(PARTS) $(CFLAGS) $(INC_DIR) $(INC)
 
 $(BUILD_DIR)/%.o : $(SOURCE_DIR)/%.c | $(BUILD_DIR)
-	$(CC) -c $< -o $@ $(CFLAGS)
+	$(CC) $(INC_DIR) $(INC) -c $< -o $@ $(CFLAGS)
