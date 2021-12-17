@@ -22,7 +22,7 @@ def IRR(k_arr, g, n_e, s):
         nnv = NNV(k_arr, g, n_e, r, s)
     return r
 
-def ANNU(k_arr, g, n_e, r):
+def ANNU(k_arr, g, n_e, r, s):
     nnv = NNV(k_arr, g, n_e, r, s)
     return nnv * r / (1 - pow((1 + r), -n_e))
 
